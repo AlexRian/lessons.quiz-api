@@ -10,8 +10,16 @@ SUBJECTS = (
     ('Math', 'Math'),
 )
 
+TYPES = (
+    ('radio', 'Radio'),
+    ('checkbox', 'Checkbox'),
+    ('input', 'Input'),
+    ('select', 'Select'),
+)
+
 class Question(models.Model):
     level = models.CharField(max_length=300, choices=LEVELS, null=True, blank=True)
+    type = models.CharField(max_length=300, choices=TYPES, null=False, blank=False)
     subject = models.CharField(max_length=300, choices=SUBJECTS, null=True, blank=True)
     text = models.TextField(null=False, blank=False)
     right_answers = models.CharField(max_length=300, null=False, blank=False)
