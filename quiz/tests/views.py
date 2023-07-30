@@ -28,16 +28,16 @@ class QuestionView(viewsets.ViewSet):
                         if str(answer) in question.right_answers.split(','):
                             right_answers += 1
 
-                    result = {"id":check_id, "answer": len(check_answer) == right_answers if True else False}
+                    result = {"id":check_id, "result": len(check_answer) == right_answers if True else False}
                     results.append(result)
                 else:
                     if str(check_answer) in question.right_answers.split(','):
-                        results.append({"id":check_id, "answer": True})
+                        results.append({"id":check_id, "result": True})
                     else:
-                        results.append({"id":check_id, "answer": False})
+                        results.append({"id":check_id, "result": False})
 
             except ObjectDoesNotExist:
-                results.append({"id":0, "answer":False})
+                results.append({"id":0, "result":False})
             
         checks_serializer = CheckItemSerializer(results, many=True)
         return Response(checks_serializer.data)
