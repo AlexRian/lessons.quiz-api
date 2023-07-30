@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from tests.views import QuestionView
 
 router = routers.DefaultRouter()
+router.register(r'questions', QuestionView, basename='Questions')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

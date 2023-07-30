@@ -13,6 +13,7 @@ class AnswerInline(admin.StackedInline):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
+    list_display = ['subject', 'level', 'text']
     inlines = [
         AnswerInline,
     ]
