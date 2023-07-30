@@ -1,2 +1,5 @@
 *.pyc
 quiz/db.sqlite3
+data
+quiz/static
+quiz/media
