@@ -17,3 +17,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['id', 'level', 'subject', 'text', 'answers']
+
+class CheckItemSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    answer = serializers.BooleanField()
