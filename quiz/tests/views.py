@@ -12,7 +12,7 @@ class QuestionView(viewsets.ViewSet):
         try:
             question = Question.objects.get(id=question)
 
-            if question.answer == request.POST.get('answer'):
+            if request.POST.get('answer') in question.right_answers.split(','):
                 return Response(status=status.HTTP_200_OK)
             else:
                 return Response(status=status.HTTP_406_NOT_ACCEPTABLE)

@@ -14,7 +14,7 @@ class Question(models.Model):
     level = models.CharField(max_length=300, choices=LEVELS, null=True, blank=True)
     subject = models.CharField(max_length=300, choices=SUBJECTS, null=True, blank=True)
     text = models.TextField(null=False, blank=False)
-    answer = models.CharField(max_length=300, null=False, blank=False, help_text="Must be identical to answers added below")
+    right_answers = models.CharField(max_length=300, null=False, blank=False)
 
     def get_question_answers(self):
         return self._question_answer.all()
