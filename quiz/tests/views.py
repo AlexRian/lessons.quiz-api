@@ -24,7 +24,7 @@ class QuestionView(viewsets.ViewSet):
         requested_level = request.GET.get('level')
         requested_subject = request.GET.get('subject')
         if requested_level and requested_subject:
-            questions = Question.objects.filter(level=request.GET.get('level'), subject=request.GET.get('subject'))
+            questions = Question.objects.filter(level=request.GET.get('level').capitalize(), subject=request.GET.get('subject').capitalize())
             serialized_questions = QuestionSerializer(questions, many=True)
             return Response(serialized_questions.data)
         else:
