@@ -28,7 +28,7 @@ class QuestionView(viewsets.ViewSet):
                         if str(answer) in question.right_answers.split(','):
                             right_answers += 1
 
-                    result = {"id":check_id, "result": len(check_answer) == right_answers if True else False}
+                    result = {"id":check_id, "result": len(question.right_answers.split(',')) == right_answers if True else False}
                     results.append(result)
                 else:
                     if str(check_answer) in question.right_answers.split(','):
