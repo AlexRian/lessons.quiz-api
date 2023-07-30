@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     #Libs
     'corsheaders',
     'rest_framework',
+
+    #Apps
+    'tests'
 ]
 
 MIDDLEWARE = [

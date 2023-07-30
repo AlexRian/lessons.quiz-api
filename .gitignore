@@ -1,1 +1,2 @@
 *.pyc
+quiz/db.sqlite3
