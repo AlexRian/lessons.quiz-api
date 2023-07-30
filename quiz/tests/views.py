@@ -22,16 +22,21 @@ class QuestionView(viewsets.ViewSet):
 
             try:
                 question = Question.objects.get(id=check_id)
+                question_right_answers = question.right_answers.split(',')
                 if isinstance(check_answer, list):
                     right_answers = 0
-                    for answer in check_answer:
-                        if str(answer) in question.right_answers.split(','):
-                            right_answers += 1
-
-                    result = {"id":check_id, "result": len(question.right_answers.split(',')) == right_answers if True else False}
-                    results.append(result)
+                    if len(question_right_answers) != len(check_answer):
+                        result = {"id":check_id, "result": False}
+                        results.append(result)
+                        continue
+                    else:
+                        for answer in check_answer:
+                            if str(answer) in question_right_answers:
+                                right_answers += 1
+                        result = {"id":check_id, "result": len(question_right_answers) == right_answers if True else False}
+                        results.append(result)
                 else:
-                    if str(check_answer) in question.right_answers.split(','):
+                    if str(check_answer) in question_right_answers:
                         results.append({"id":check_id, "result": True})
                     else:
                         results.append({"id":check_id, "result": False})
