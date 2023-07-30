@@ -13,11 +13,11 @@ class QuestionView(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], url_path='check-answers')
     def check_answer(self, request):
-        checks = request.data.get('checks')
+        checks = request.data.get('answers')
         results = []
         
         for check in checks:
-            check_answer = check.get('answer')
+            check_answer = check.get('text')
             check_id = check.get('id')
 
             try:
