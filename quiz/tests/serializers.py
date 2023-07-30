@@ -20,4 +20,4 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 class CheckItemSerializer(serializers.Serializer):
     id = serializers.IntegerField()
-    answer = serializers.BooleanField()
+    result = serializers.BooleanField()
